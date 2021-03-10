@@ -1,12 +1,12 @@
 const lengthValidator = (type, string, minLength) => {
     if(string.length < minLength) {
-        throw { message: `${type} should be at least ${minLength} charachters long!` };
+        throw { errorMsg: `${type} should be at least ${minLength} charachters long!` };
     }
 }
 
 const checkEmpty = (type, string) => {
     if(!string || string == '') {
-        throw { message: `${type} field must be filled!` };
+        throw { errorMsg: `${type} field must be filled!` };
     }
 }
 
@@ -16,7 +16,7 @@ const emailValidation = email => {
     checkEmpty('Email', email);
 
     if(!regex.test(email)) {
-        throw { message: 'Invalid email!' }
+        throw { errorMsg: 'Invalid email!' }
     }
 
     return email;
@@ -29,7 +29,7 @@ const usernameValidation = uname => {
     checkEmpty('Username', uname);
 
     if(!regex.test(uname)) {
-        throw { message: 'Username should contain only english letters and numbers!' };
+        throw { errorMsg: 'Username should contain only english letters and numbers!' };
     }
 
     lengthValidator('Username', uname, minLength);
@@ -44,7 +44,7 @@ const nameValidation = name => {
     checkEmpty('Name', name);
 
     if(!regex.test(name)) {
-        throw { message: 'Name should contain only english letters!' };
+        throw { errorMsg: 'Name should contain only english letters!' };
     }
 
     lengthValidator('Name', name, minLength);

@@ -11,7 +11,7 @@ const register = async data => {
     let password = userValidator.passwordValidation(data.password);
     
     if(password !== data.repPassword) {
-        throw { message: 'Passwords must match!' };
+        throw { errorMsg: 'Passwords must match!' };
     }
 
     let salt = await bcrypt.genSalt(SALT_ROUNDS);
@@ -26,8 +26,20 @@ const register = async data => {
     return token;
 };
 
-const login = data => {
+const login = async data => {
+    let email = userValidator.emailValidation(data.email);
+    let password = userValidator.passwordValidation(data.password);
+    let errorMsg = 'Invalid email / password!';
 
+    let user = await User.findOne({email});
+    if(!user) throw { errorMsg };
+
+    let passwordCheck = await bcrypt.compare(password, user.password);
+    if(!passwordCheck) throw { errorMsg };
+    
+    let token = jwt.sign({id: user._id, username: user.name}, SECRET);
+
+    return token;
 };
 
 module.exports = {
