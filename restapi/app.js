@@ -3,6 +3,7 @@ const routes = require('./routes');
 const { PORT } = require('./config/config');
 
 require('./config/mongoose');
+require('./config/express')(app);
 
 app.use(routes);
 
