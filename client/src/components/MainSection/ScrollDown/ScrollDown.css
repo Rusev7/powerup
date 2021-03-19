@@ -1,0 +1,22 @@
+.scroll-down-container {
+    display: flex;
+    flex-direction: column;
+    height: 7rem;
+    width: 7rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 5rem;
+    align-items: center;
+}
+
+.scroll-down-text {
+    margin-top: 3rem;
+    font-size: 1.5rem;
+    font-family: var(--font-text);
+    color: var(--color-grey-light-2);
+}
+
+.scroll-down-icon {
+    animation: slide-down .7s ease infinite;
+}
