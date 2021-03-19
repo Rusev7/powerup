@@ -1,0 +1,35 @@
+.nav {
+    padding: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.login-section {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 55rem;
+}
+
+.loginBtn {
+    margin-left: 2rem;
+    padding: 1rem 2.5rem;
+    outline: none;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    font-weight: 600;
+    font-family: var(--font-text);
+    background-color: transparent;
+    transition: .3s ease;
+}
+
+.loginBtn:hover {
+    background-color: var(--color-primary);
+    color: var(--color-grey-dark);
+    cursor: pointer;
+}
+
+.loginBtn:active {
+    transform: translateY(2px);
+}

@@ -1,10 +1,11 @@
 import Navigation from '../Navigation';
+import MainSection from '../MainSection';
 
 const Home = props => {
     return (
         <div>
             <Navigation />
-            <h1>Homeeeee</h1>
+            <MainSection />
         </div>
     )
 }
