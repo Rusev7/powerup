@@ -1,0 +1,27 @@
+.reg-section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-image: url('../../images/home-image-1.jpg');
+    justify-content: center;
+    align-items: center;
+}
+
+.description-container {
+    width: 60%;
+    background-color: var(--color-primary-rgb);
+    padding: 2rem 5rem;
+
+    border-left: 1.5rem solid var(--color-primary);
+}
+
+.description-text {
+    font-family: var(--font-text);
+    color: var(--color-white);
+    font-size: 3rem;
+}
+
+.description-logo { 
+    color: var(--color-primary)
+}
+

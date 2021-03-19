@@ -3,11 +3,13 @@
 :root {
     /* Color variables */
     --color-primary: #df3b3b;
+    --color-primary-rgb: rgb(223, 59, 59, 0.2);
     --color-primary-dark: #8d2424;
     --color-grey: #2a2a2a;
     --color-grey-light-1: #9b9b9b;
     --color-grey-light-2: #e2e2e2;
     --color-grey-dark: #191919;
+    --color-white: #fff;
 
     /* Font variables */
     --font-heading: 'Roboto Slab', serif;

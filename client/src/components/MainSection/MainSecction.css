@@ -1,8 +1,5 @@
-.main-image {
-    position: absolute;
+.main-section {
     top: 0;
-    left: 0;
-    z-index: -1;
-    width: 100vw;
-    pointer-events: none;
+    background-image: url('../../images/home-image.jpg');
+    height: 100vh;
 }
