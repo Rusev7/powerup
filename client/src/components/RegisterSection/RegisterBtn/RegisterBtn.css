@@ -1,0 +1,22 @@
+.register-btn {
+    background-color: var(--color-primary);
+    border: none;
+    outline: none;
+    margin-top: 3rem;
+    padding: 1.5rem 5rem;
+    text-transform: uppercase;
+    font-family: var(--font-text);
+    font-weight: 400;
+    font-size: 2rem;
+    animation: pulsate 2s ease infinite;
+    animation-play-state: paused; 
+}
+
+.register-btn:hover {
+    animation-play-state: running;
+    cursor: pointer;
+}
+
+.register-btn:active {
+    animation: none;
+}

@@ -5,6 +5,7 @@
     background-image: url('../../images/home-image-1.jpg');
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .description-container {
@@ -25,3 +26,21 @@
     color: var(--color-primary)
 }
 
+.modal-container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    transition: .2s ease-out;
+    z-index: -1;
+}
+
+.modal-container-show {
+    animation: background-change .2s ease-out 1 forwards;
+}
+
+.modal-container-hide {
+    animation: background-change-reverse .2s ease-out 1 forwards;
+}

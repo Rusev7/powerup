@@ -1,8 +1,15 @@
+import { useState } from 'react';
+
 import './RegisterSection.css';
 
-import RegisterBtn from './RegisterBtn'
+import RegisterBtn from './RegisterBtn';
+import Modal from '../Modal';
 
 const RegisterSection = () => {
+    const [modal, setModal] = useState(false);
+
+    const containerClassName = modal ? 'modal-container-show' : 'modal-container-hide';
+
     return (
         <section className="reg-section">
                 <div className="description-container">    
@@ -11,7 +18,12 @@ const RegisterSection = () => {
                     </p>
                 </div>
 
-                <RegisterBtn />
+                <RegisterBtn handleOpen={() => setModal(true)} />
+
+                <div className={`modal-container ${containerClassName}`}>
+                    <Modal show={modal} handleClose={() => setModal(false)}>
+                    </Modal>
+                </div>
         </section>
     )
 };

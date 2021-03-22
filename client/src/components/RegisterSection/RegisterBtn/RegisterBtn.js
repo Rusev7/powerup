@@ -1,6 +1,10 @@
-const RegisterBtn = () => {
+import './RegisterBtn.css';
+
+const RegisterBtn = ({
+    handleOpen
+}) => {
     return (
-        <button className="registerBtn">register now</button>
+        <button onClick={handleOpen} className="register-btn">register now</button>
     )
 }
 

@@ -10,6 +10,7 @@
     --color-grey-light-2: #e2e2e2;
     --color-grey-dark: #191919;
     --color-white: #fff;
+    --color-black: #000;
 
     /* Font variables */
     --font-heading: 'Roboto Slab', serif;
@@ -42,5 +43,63 @@ body {
 
     100% {
         transform: translateY(3rem);
+    }
+}
+
+@keyframes pulsate {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes background-change {
+    0% {
+        background-color: transparent;
+        z-index: -1;
+    }
+
+    100% {
+        background-color: rgba(0,0,0, .6);
+        z-index: 1;
+    }
+}
+
+@keyframes background-change-reverse {
+    0% {
+        background-color: rgba(0,0,0, .6);
+        z-index: 1;
+    }
+
+    100% {
+        background-color: rgba(0,0,0,0);
+        z-index: -1;
+    }
+}
+
+@keyframes show-modal {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes hide-modal {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(0);
     }
 }
