@@ -5,19 +5,19 @@ const userValidator = require('../validation/userValidation');
 const { SALT_ROUNDS, SECRET } = require('../config/config');
 
 const register = async data => {
-    let name = userValidator.nameValidation(data.name);
     let username = userValidator.usernameValidation(data.username);
     let email = userValidator.emailValidation(data.email);
     let password = userValidator.passwordValidation(data.password);
+    let registrationDate = new Date;
     
-    if(password !== data.repPassword) {
+    if(password !== data.passwordRep) {
         throw { errorMsg: 'Passwords must match!' };
     }
 
     let salt = await bcrypt.genSalt(SALT_ROUNDS);
     let hash = await bcrypt.hash(password, salt);
 
-    const newUser = new User({name, username, email, password: hash});
+    const newUser = new User({username, email, password: hash, registrationDate});
 
     let token = jwt.sign({id: newUser._id, username: newUser.username}, SECRET);
 

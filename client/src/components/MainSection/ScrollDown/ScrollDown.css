@@ -15,8 +15,10 @@
     font-size: 1.5rem;
     font-family: var(--font-text);
     color: var(--color-grey-light-2);
+    cursor: pointer;
 }
 
 .scroll-down-icon {
     animation: slide-down .7s ease infinite;
+    cursor: pointer;
 }

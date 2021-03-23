@@ -5,6 +5,7 @@ import './RegisterSection.css';
 
 import RegisterBtn from './RegisterBtn';
 import Modal from '../Modal';
+import RegisterForm from './RegisterForm';
 
 const RegisterSection = React.forwardRef((props, ref) => {
     const [modal, setModal] = useState(false);
@@ -24,6 +25,7 @@ const RegisterSection = React.forwardRef((props, ref) => {
 
                 <div className={`modal-container ${containerClassName}`}>
                     <Modal show={modal} handleClose={() => setModal(false)}>
+                        <RegisterForm />
                     </Modal>
                 </div>
         </section>

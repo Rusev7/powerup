@@ -12,6 +12,10 @@
     animation-play-state: paused; 
 }
 
+.register-btn-wide {
+    width: 20rem;
+}
+
 .register-btn:hover {
     animation-play-state: running;
     cursor: pointer;
