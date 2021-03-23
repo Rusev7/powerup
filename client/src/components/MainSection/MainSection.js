@@ -2,10 +2,12 @@ import './MainSecction.css';
 
 import ScrollDown from './ScrollDown';
 
-const MainSection = () => {
+const MainSection = ({
+    handleScrollDown
+}) => {
     return (
         <section className="main-section">
-            <ScrollDown />
+            <ScrollDown handleScrollDown={handleScrollDown}/>
         </section>
     )
 }
