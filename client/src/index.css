@@ -9,6 +9,7 @@
     --color-grey-light-1: #9b9b9b;
     --color-grey-light-2: #e2e2e2;
     --color-grey-dark: #191919;
+    --color-dark: #0f0f0f;
     --color-white: #fff;
     --color-black: #000;
 
@@ -101,5 +102,25 @@ body {
 
     100% {
         transform: scale(0);
+    }
+}
+
+@keyframes show-menu {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes hide-menu {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(100%);
     }
 }

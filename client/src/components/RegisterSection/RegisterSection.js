@@ -12,7 +12,6 @@ const RegisterSection = React.forwardRef((props, ref) => {
 
     const containerClassName = modal ? 'modal-container-show' : 'modal-container-hide';
 
-    console.log(ref);
     return (
         <section ref={ref} className="reg-section">
                 <div className="description-container">    

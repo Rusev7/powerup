@@ -1,15 +1,13 @@
-import './MainSecction.css';
+import './MainSection.css';
 
-import ScrollDown from './ScrollDown';
+import NavigationButton from './NavigationButton';
 
-const MainSection = ({
-    handleScrollDown
-}) => {
+const MainSection = () => {
     return (
         <section className="main-section">
-            <ScrollDown handleScrollDown={handleScrollDown}/>
+            <NavigationButton text="create a workout" />
         </section>
     )
-}
+};
 
 export default MainSection;
