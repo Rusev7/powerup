@@ -2,7 +2,7 @@ import './StartSection.css';
 
 import ScrollDown from './ScrollDown';
 
-const MainSection = ({
+const StartSection = ({
     handleScrollDown
 }) => {
     return (
@@ -12,4 +12,4 @@ const MainSection = ({
     )
 }
 
-export default MainSection;
+export default StartSection;

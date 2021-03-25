@@ -10,6 +10,14 @@
     transition: .3s ease-out;
 }
 
+.nav-logo {
+    transition: .2s ease-out;
+}
+
+.nav-logo:hover {
+    filter: brightness(120%) contrast(120%);
+}
+
 .nav-scroll {
     background-color: var(--color-grey-dark);
 }

@@ -44,7 +44,7 @@ class Navigation extends Component {
         if(this.loggedIn) {
             return (
                 <nav className="nav">
-                    <NavLink to="/"><img src="/logoD.png" alt="Logo" onClick={this.onCloseBtnClickHandler}/></NavLink>
+                    <NavLink to="/" className="nav-logo"><img src="/logoD.png" alt="Logo" onClick={this.onCloseBtnClickHandler}/></NavLink>
 
                         <div className="hamburger-container" onClick={this.onHamburgerClickHandler}>
                             <div className="hamburger"></div>
@@ -64,7 +64,7 @@ class Navigation extends Component {
         } else {
             return (
                 <nav className="nav">
-                   <NavLink to="/"><img src="/logoD.png" alt="Logo"/></NavLink>
+                   <NavLink to="/" className="nav-logo"><img src="/logoD.png" alt="Logo"/></NavLink>
                     <form className="right-section">
                         <Input name="email" type="email" />
                         <Input name="password" type="password" />

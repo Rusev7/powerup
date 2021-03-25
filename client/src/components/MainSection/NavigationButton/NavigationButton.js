@@ -3,12 +3,14 @@ import './NavigationButton.css';
 import { Link } from 'react-router-dom';
 
 const NavigationButton = ({
-    text
+    linkTo,
+    text,
+    highlighted
 }) => {
     return (
-        <Link>
-            <div className="button-container">
-                <p>{text}</p>
+        <Link to={linkTo} className="main-button">
+            <div className="main-button-text">
+                {text} <span className="main-text-red">{highlighted}</span>
             </div>
         </Link>
     )

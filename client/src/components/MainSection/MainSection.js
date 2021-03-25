@@ -5,7 +5,10 @@ import NavigationButton from './NavigationButton';
 const MainSection = () => {
     return (
         <section className="main-section">
-            <NavigationButton text="create a workout" />
+            <NavigationButton linkTo="/create-workout" text="create a" highlighted="workout" />
+            <NavigationButton linkTo="/workouts" text="my" highlighted="workouts" />
+            <NavigationButton linkTo="/progress" text="check your" highlighted="progress" />
+            <NavigationButton linkTo="/progress" text="check your" highlighted="progress" />
         </section>
     )
 };
