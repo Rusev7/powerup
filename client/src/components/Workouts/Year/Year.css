@@ -1,0 +1,24 @@
+.year-container {
+    position: relative;
+    top: 10rem;
+    margin-left: 2rem;
+    margin-top: 5rem;
+    max-width: 30%;
+}
+
+.year-text {
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 600;
+    position: relative;
+}
+
+.year-text::before {
+    content: '';
+    background-color: var(--color-primary);
+    position: absolute;
+    bottom: 0;
+    width: 15rem;
+    height: 3px;
+}

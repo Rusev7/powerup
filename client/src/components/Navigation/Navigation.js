@@ -54,7 +54,7 @@ class Navigation extends Component {
                             <div className="close-btn-container" onClick={this.onCloseBtnClickHandler}>
                                 <div className="close-btn"></div>
                             </div>
-                            <NavLink to="/workouts" activeClassName="nav-link-active" className="nav-link" onClick={this.onCloseBtnClickHandler}>my workouts</NavLink>
+                            <NavLink to="/my-workouts" activeClassName="nav-link-active" className="nav-link" onClick={this.onCloseBtnClickHandler}>my workouts</NavLink>
                             <NavLink to="/create-workout" activeClassName="nav-link-active" className="nav-link" onClick={this.onCloseBtnClickHandler}>create workout</NavLink>
                             <NavLink to="/profile" activeClassName="nav-link-active" className="nav-link" onClick={this.onCloseBtnClickHandler}>profile</NavLink>
                             <NavLink to="/logout" className="btn-red-small btn-align-down" onClick={this.onCloseBtnClickHandler}>logout</NavLink>
@@ -68,7 +68,7 @@ class Navigation extends Component {
                     <form className="right-section">
                         <Input name="email" type="email" />
                         <Input name="password" type="password" />
-                        <input type="submit" className="btn-red-small" value="login"/>
+                        <input type="submit" className="btn-red-small btn-login" value="login"/>
                     </form>
                 </nav>
             )

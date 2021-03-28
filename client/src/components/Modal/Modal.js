@@ -9,7 +9,7 @@ const Modal = ({
 
     return (
         <div className={`modal ${divClassName}`}>
-            <span className='close-btn' onClick={handleClose}>&#10005;</span>
+            <span className='modal-close-btn' onClick={handleClose}>&#10005;</span>
             {children}
         </div>
     )

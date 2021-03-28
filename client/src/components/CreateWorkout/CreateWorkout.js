@@ -11,6 +11,8 @@ const CreateWorkout = () => {
     const onCreateFormSubmitHandler = e => {
         e.preventDefault();
         console.log(e.target);
+
+        setFormSubmitted(true);
     }
 
     return (
@@ -24,7 +26,7 @@ const CreateWorkout = () => {
                 <label htmlFor="personalWeight" className="create-form-label margin-top-20">Your weight:</label>
                 <input type="number" name="personalWeight" id="personalWeight" className="create-form-input" />
 
-                <input type="submit" onClick={() => setFormSubmitted(true)} value="start" className="create-form-btn margin-top-30"/>
+                <input type="submit" value="start" className="create-form-btn margin-top-30"/>
             </form>
 
             {formSubmitted && <ExerciseForm />}

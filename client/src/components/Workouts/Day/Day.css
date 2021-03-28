@@ -1,0 +1,30 @@
+.day-container {
+    position: relative;
+    left: 3rem;
+    margin-top: 2rem;
+}
+
+.day-text {
+    color: var(--color-primary);
+    font-family: var(--font-text);
+    font-size: 2rem;
+    position: relative;
+}
+
+.day-text::before {
+    content: '';
+    background-color: var(--color-primary);
+    position: absolute;
+    bottom: -5px;
+    width: 15rem;
+    height: 3px;
+}
+
+.end-week::before {
+    content: '';
+    background-color: var(--color-primary);
+    position: absolute;
+    bottom: -5px;
+    width: 30rem;
+    height: 5px;
+}

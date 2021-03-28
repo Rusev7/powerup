@@ -16,3 +16,10 @@
 ::placeholder {
     color: var(--color-grey-light-1);
 }
+
+@media screen and (max-width: 900px) {
+    .input {
+        margin-top: 1rem;
+    }
+    
+}

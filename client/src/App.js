@@ -2,9 +2,10 @@ import './App.css';
 
 import { Switch, Route } from 'react-router-dom';
 
+import Navigation from './components/Navigation';
 import Home from './components/Home';
 import CreateWorkout from './components/CreateWorkout';
-import Navigation from './components/Navigation';
+import Workouts from './components/Workouts';
 
 function App() {
     return (
@@ -13,6 +14,7 @@ function App() {
             <Switch>
                 <Route path="/" exact component={Home} />
                 <Route path="/create-workout" component={CreateWorkout} />
+                <Route path="/my-workouts" component={Workouts} />
             </Switch>
         </div>
     );
