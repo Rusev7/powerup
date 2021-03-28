@@ -8,11 +8,3 @@
     font-family: var(--font-text);
     color: var(--color-grey-light-1);
 }
-
-.footer-red-text {
-    color: var(--color-primary)
-}
-
-.footer-uppercase-text {
-    text-transform: uppercase;
-}

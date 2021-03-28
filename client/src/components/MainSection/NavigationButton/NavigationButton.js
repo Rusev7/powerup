@@ -10,7 +10,7 @@ const NavigationButton = ({
     return (
         <Link to={linkTo} className="main-button">
             <div className="main-button-text">
-                {text} <span className="main-text-red">{highlighted}</span>
+                {text} <span className="text-red">{highlighted}</span>
             </div>
         </Link>
     )

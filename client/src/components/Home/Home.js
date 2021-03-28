@@ -16,18 +16,18 @@ const Home = () => {
 
     if(loggedIn) {
         return (
-            <>
+            <div className="fade-in">
                 <MainSection />
                 <Footer />
-            </>
+            </div>
         );
     } else {
         
         return (
-            <>
+            <div className="fade-in">
                 <StartSection handleScrollDown={handleScrollDown}/>
                 <RegisterSection ref={regSection}/>
-            </>
+            </div>
         )
     }
     

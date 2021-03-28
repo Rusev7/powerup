@@ -26,7 +26,7 @@ const pushExercise = async data => {
 
     let currWorkout = await Workout.findById(workoutId);
 
-    let exerciseName = nameValidation(data.name);
+    let exerciseName = nameValidation(data.exerciseNname);
     let sets = [];
 
     Object.keys(data).slice(2).forEach(dataElement => {

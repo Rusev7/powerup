@@ -41,13 +41,6 @@
     color: var(--color-primary)
 }
 
-.main-text-red {
-    text-transform: uppercase;
-    font-size: 4rem;
-    font-family: var(--font-text);
-    color: var(--color-primary)
-}
-
 .main-button:nth-of-type(1) {
     margin-top: 20rem;
     background-image: url('../../../images/navi-button-1.jpg');
