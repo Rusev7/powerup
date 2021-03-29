@@ -9,6 +9,12 @@
     font-family: var(--font-text);
     font-size: 2.5rem;
     position: relative;
+    transition: .2s ease-out;
+    cursor: pointer;
+}
+
+.month-text:hover {
+    filter: brightness(150%);
 }
 
 .month-text::before {
@@ -18,4 +24,8 @@
     bottom: 0;
     width: 15rem;
     height: 3px;
+}
+
+.month-content-hidden {
+    display: none;
 }

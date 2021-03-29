@@ -3,7 +3,7 @@ const router = require('express').Router();
 const workoutService = require('../services/workoutsService');
 
 router.post('/create', (req, res) => {
-    workoutService.create(req.body, '6048e3374adb7b2428b0a843')
+    workoutService.create(req.body)
         .then(data => {
             res.status(201).json({ message: 'Successfully created workout!', workoutId: data._id });
         })

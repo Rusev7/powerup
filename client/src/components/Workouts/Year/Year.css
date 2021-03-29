@@ -1,9 +1,7 @@
 .year-container {
     position: relative;
-    top: 10rem;
     margin-left: 2rem;
     margin-top: 5rem;
-    max-width: 30%;
 }
 
 .year-text {
@@ -12,6 +10,12 @@
     font-size: 3rem;
     font-weight: 600;
     position: relative;
+    transition: .2s ease-out;
+    cursor: pointer;
+}
+
+.year-text:hover {
+    filter: brightness(150%);
 }
 
 .year-text::before {
@@ -21,4 +25,8 @@
     bottom: 0;
     width: 15rem;
     height: 3px;
+}
+
+.year-content-hidden {
+    display: none;
 }

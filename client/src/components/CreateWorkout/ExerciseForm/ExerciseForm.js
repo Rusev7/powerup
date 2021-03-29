@@ -1,17 +1,47 @@
 import { useState } from 'react'
+import { useHistory } from 'react-router-dom';
+
+import { nameValidation, exerciseWeightValidation, numberValidation} from '../../../validation/validation';
+import {  } from '../../../services/workoutService';
+
+import ErrorNotification from '../../ErrorNotification';
 
 import './ExerciseForm.css';
 
-const ExerciseForm = () => {
-
+const ExerciseForm = ({
+    workoutId
+}) => {
     const [data, setData] = useState([
         { reps: 0, weight: 0 },
     ])
 
+    const [errorMessage, setErrorMessage] = useState('');
+
     const onExerciseFormSubmitHandler = (e) => {
         e.preventDefault();
 
-        console.log(e.target.exerciseName.value);
+        const exerciseName = nameValidation(e.target.exerciseName.value, 'Exercise name');
+        const isValidData = data.every(item => {
+            if(!numberValidation(item.reps).validated) {
+                return false;
+            }
+
+            if(!exerciseWeightValidation(item.weight).validated) {
+                return false;
+            }
+
+            return true;
+        });
+
+        if(exerciseName.validated) {
+            if(isValidData) {
+                
+            } else {
+                setErrorMessage('Invalid weight / reps value! (For the weight you can put number or "bodyweight")');
+            }
+        } else {
+            setErrorMessage(exerciseName.errorMsg);
+        }
     };
 
     const handleChange = (e, index) => {
@@ -60,7 +90,7 @@ const ExerciseForm = () => {
 
                         <label htmlFor="weight" className="create-form-label margin-left-20">Weight:</label>
                         <input
-                            type="number"
+                            type="text"
                             name="weight"
                             id="weight"
                             className="create-form-input margin-left-10"
@@ -89,6 +119,8 @@ const ExerciseForm = () => {
                 <input type="submit" value="Next exercise" className="create-form-btn"/>
                 <input type="submit" value="Finish workout!" className="create-form-btn filled-btn"/>
             </div>
+
+            <ErrorNotification message={errorMessage}/>
         </form>
     )
 };

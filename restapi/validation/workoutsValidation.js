@@ -6,18 +6,21 @@ const nameValidation = name => {
     return name;
 }
 
-const numberValidation = number => {
+const numberValidation = input => {
     const regEx = /^\d+$/;
+    const min = 0;
 
-    if(!regEx.test(number)) {
-        throw { errorMsg: 'Weight field must contain a number!' };
+    if(regEx.test(input)) {
+        if(Number(input) < min) {
+            throw { errorMsg: `Exercise weight must be at least ${min} kg/lbs!` };
+        }
+    } else {
+        if(input.toLowerCase() !== 'bodyweight') {
+            throw { errorMsg: `Exercise weight must be either BODYWEIGHT or a number!` };
+        }
     }
 
-    if(Number(number) < 0) {
-        throw { errorMsg: 'Weight field must be a positive number!' };
-    }
-
-    return number;
+    return input;
 }
 
 module.exports = {

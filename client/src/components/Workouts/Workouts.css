@@ -1,3 +1,13 @@
+.workout-component-wrapper {
+    display: flex;
+    position: relative;
+    top: 10rem
+}
+
+.workout-history { 
+    width: 30%;
+}
+
 .empty-message {
     position: absolute;
     top: 50%;
@@ -42,4 +52,37 @@
 
 .info-workout-btn:active {
     transform: translateY(5px);
+}
+
+.workout-container {
+    position: sticky;
+    left: 30%;
+    top: 25%;
+    height: 60vh;
+    width: 65%;
+    outline: 2px solid var(--color-grey-light-1);
+    padding: 2rem 5rem;
+}
+
+.workout-container-name {
+    text-align: center;
+    color: var(--color-primary);
+    font-family: var(--font-text);
+    font-weight: 600;
+    font-size: 3rem;
+}
+
+.workout-container-date {
+    text-align: center;
+    color: var(--color-primary);
+    font-family: var(--font-text);
+    font-weight: 200;
+    font-size: 2rem;
+}
+
+.workout-container-weight {
+    color: var(--color-grey-light-1);
+    font-family: var(--font-text);
+    font-weight: 400;
+    font-size: 2rem;
 }

@@ -2,18 +2,18 @@ const Workout = require('../models/Workout');
 const User = require('../models/User');
 const { nameValidation, numberValidation } = require('../validation/workoutsValidation');
 
-const create = async (data, userId) => {
-    let workoutName = nameValidation(data.name);
+const create = async (data) => {
+    let workoutName = nameValidation(data.workoutName);
     let date = new Date();
-    let weight = numberValidation(data.weight);
-    
+    let personalWeight = numberValidation(data.personalWeight);    
+
     let workout = new Workout({
-        name: workoutName,
+        workoutName,
         date,
-        weight,
+        personalWeight,
     });
 
-    const user = await User.findById(userId);
+    const user = await User.findById(data.userId);
     user.workouts.push(workout._id);
 
     await user.save();
