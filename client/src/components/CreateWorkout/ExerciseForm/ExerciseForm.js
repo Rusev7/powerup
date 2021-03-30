@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useHistory } from 'react-router-dom';
 
 import { nameValidation, exerciseWeightValidation, numberValidation} from '../../../validation/validation';
-import {  } from '../../../services/workoutService';
+import { pushExercise } from '../../../services/workoutService';
 
 import ErrorNotification from '../../ErrorNotification';
 
@@ -16,6 +16,8 @@ const ExerciseForm = ({
     ])
 
     const [errorMessage, setErrorMessage] = useState('');
+    const [finishedWorkout, setFinishedWorkout] = useState(false);
+    const history = useHistory();
 
     const onExerciseFormSubmitHandler = (e) => {
         e.preventDefault();
@@ -35,7 +37,23 @@ const ExerciseForm = ({
 
         if(exerciseName.validated) {
             if(isValidData) {
-                
+                const dataBody = {
+                    workoutId: workoutId,
+                    exerciseName: exerciseName.input,
+                    exerciseSets: data,
+                }
+
+                pushExercise(dataBody)
+                    .then(res => res.json())
+                    .then(data => {
+                        if(finishedWorkout) {
+                            history.push('/');
+                        } else {
+                            e.target.exerciseName.value = '';
+                            setData([{reps: 0, weight: 0}]);
+                        }
+                    });
+                    
             } else {
                 setErrorMessage('Invalid weight / reps value! (For the weight you can put number or "bodyweight")');
             }
@@ -48,7 +66,7 @@ const ExerciseForm = ({
         const { name, value } = e.target;
 
         const list = [...data];
-
+        
         list[index][name] = value;
 
         setData(list);
@@ -117,7 +135,7 @@ const ExerciseForm = ({
             
             <div className="btns-row">
                 <input type="submit" value="Next exercise" className="create-form-btn"/>
-                <input type="submit" value="Finish workout!" className="create-form-btn filled-btn"/>
+                <input type="submit" onClick={() => setFinishedWorkout(true)} value="Finish workout!" className="create-form-btn filled-btn"/>
             </div>
 
             <ErrorNotification message={errorMessage}/>

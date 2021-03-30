@@ -17,7 +17,15 @@ export const createWorkout = (data, userId) => {
 }
 
 export const pushExercise = data => {
-    const dataBody = {};
+    return fetch(`${url}/add-exercise`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data),
+    })
+}
 
-    
+export const getWorkotus = userId => {
+    return fetch(`${url}/get-workouts`);
 }
