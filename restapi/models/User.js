@@ -31,7 +31,7 @@ const userSchema = new mongoose.Schema({
         type: Number
     },
 
-    weigth: {
+    weight: {
         type: Number
     },
 

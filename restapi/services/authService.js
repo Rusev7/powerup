@@ -6,18 +6,32 @@ const { SALT_ROUNDS, SECRET } = require('../config/config');
 
 const register = async data => {
     let username = userValidator.usernameValidation(data.username);
-    let email = userValidator.emailValidation(data.email);
+    let email = userValidator.emailValidation(data.email).toLowerCase();
     let password = userValidator.passwordValidation(data.password);
+    let age = data.age;
+    let height = data.height;
+    let weight = data.weight;
     let registrationDate = new Date;
     
     if(password !== data.passwordRep) {
         throw { errorMsg: 'Passwords must match!' };
     }
 
+    const userByUsername = await User.findOne({ username });
+    const userByEmail = await User.findOne({ email });
+    
+    if(userByUsername) {
+        throw { errorMsg: 'There is already registered user with that username' };
+    }
+
+    if(userByEmail) {
+        throw { errorMsg: 'There is already registered user with that email' };
+    }
+
     let salt = await bcrypt.genSalt(SALT_ROUNDS);
     let hash = await bcrypt.hash(password, salt);
 
-    const newUser = new User({username, email, password: hash, registrationDate});
+    const newUser = new User({username, email, password: hash, registrationDate, age, height, weight});
 
     let token = jwt.sign({id: newUser._id, username: newUser.username}, SECRET);
 

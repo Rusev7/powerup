@@ -10,7 +10,10 @@ const Year = ({
 
     return (
         <div className="year-container">
-            <span className="year-text" onClick={() => setClicked(!clicked)}>{year}</span>
+            <div className="year-text-container" onClick={() => setClicked(!clicked)}>
+                <span className="year-text">{year}</span>
+                <span className={`year-arrow ${clicked ? 'flip-up' : ''}`}>&#8679;</span>
+            </div>
             <div className={`${clicked ? 'year-content-hidden' : ''}`}>{children}</div>
         </div>
     )

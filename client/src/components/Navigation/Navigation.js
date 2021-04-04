@@ -3,23 +3,23 @@ import './Navigation.css';
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
+import { login } from '../../services/authService';
+
 import Input from './Input';
 
 class Navigation extends Component {
     constructor(props) {
         super(props);
 
-        this.loggedIn = props.loggedIn;
         this.state = {
             menu: false,
         }
 
         this.onHamburgerClickHandler = this.onHamburgerClickHandler.bind(this);
         this.onCloseBtnClickHandler = this.onCloseBtnClickHandler.bind(this);
+        this.handleLoginFormSubmit = this.handleLoginFormSubmit.bind(this);
     }
-    // TODO: FIX IT WITH {REF} IF POSSIBLE
-    // !!!!!!!
-    // !!!!!!!
+
     handleScroll(e) {
         if(window.scrollY > 20) {
             document.querySelector('.nav').classList.add('nav-scroll');
@@ -40,8 +40,20 @@ class Navigation extends Component {
         this.setState({menu: false});
     }
 
+    handleLoginFormSubmit(e) {
+        e.preventDefault();
+
+        const { email, password } = e.target;
+
+        login({email: email.value, password: password.value})
+            .then(res => res.json())
+            .then(res => {
+                this.props.handleLogin(true);
+            });
+    }
+
     render() {
-        if(this.loggedIn) {
+        if(this.props.loggedIn) {
             return (
                 <nav className="nav">
                     <NavLink to="/" className="nav-logo"><img src="/logoD.png" alt="Logo" onClick={this.onCloseBtnClickHandler}/></NavLink>
@@ -65,7 +77,7 @@ class Navigation extends Component {
             return (
                 <nav className="nav">
                    <NavLink to="/" className="nav-logo"><img src="/logoD.png" alt="Logo"/></NavLink>
-                    <form className="right-section">
+                    <form className="right-section" onSubmit={this.handleLoginFormSubmit}>
                         <Input name="email" type="email" />
                         <Input name="password" type="password" />
                         <input type="submit" className="btn-red-small btn-login" value="login"/>

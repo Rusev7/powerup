@@ -19,7 +19,8 @@ router.post('/add-exercise', (req, res) => {
 
 router.get('/get-workouts', (req, res) => {
     // workoutService.getAll(req.user.id);
-    workoutService.getAll('6048e3374adb7b2428b0a843')
+    console.log(req);
+    workoutService.getAll('60646e784ed576062ca61187')
         .then(workouts => {
             res.status(200).json({ message: 'Successfully fetched workouts!', workouts });
         })

@@ -6,7 +6,6 @@ const CurrentWorkout = ({
     workout
 }) => {
     const [currentExercise, setCurrentExercise] = useState(null);
-    console.log(currentExercise);
 
     if(!workout) {
         return null;

@@ -30,3 +30,28 @@
 .year-content-hidden {
     display: none;
 }
+
+.year-arrow {
+    display: inline-block;
+    transform: rotate(180deg);
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 600;
+    position: relative;
+    transition: .2s ease-out;
+    cursor: pointer; 
+    margin-left: 1rem;
+}
+
+.flip-up {
+    transform: rotate(0);
+}
+
+.year-text-container {
+    transition: .2s ease-in;
+}
+
+.year-text-container:hover  {
+    filter: brightness(150%);
+}

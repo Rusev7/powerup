@@ -15,7 +15,7 @@ const Workouts = () => {
     const [currentWorkout, setCurrentWorkout] = useState(null);
 
     useEffect(() => {
-        getWorkotus('6048e3374adb7b2428b0a843')
+        getWorkotus('60646e784ed576062ca61187')
             .then(res => res.json())
             .then(data => {
                 const workoutsData = data.workouts;

@@ -18,6 +18,14 @@ const workoutSchema = new mongoose.Schema({
     exercises: {
         type: Array,
         default: []
+    },
+
+    rating: {
+        type: Number,
+    },
+
+    description: {
+        type: String,
     }
 });
 

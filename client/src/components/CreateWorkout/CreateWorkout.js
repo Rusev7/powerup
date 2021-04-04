@@ -37,7 +37,7 @@ const CreateWorkout = () => {
                 personalWeight: personalWeight.input
             }
 
-            createWorkout(data, '6048e3374adb7b2428b0a843')
+            createWorkout(data, '60646e784ed576062ca61187')
                 .then(res => res.json())
                 .then(data => {
                     setWorkoutIdParam(data.workoutId);

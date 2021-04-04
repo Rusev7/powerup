@@ -5,9 +5,9 @@ import StartSection from '../StartSection';
 import RegisterSection from '../RegisterSection';
 import Footer from '../Footer';
 
-const loggedIn = true;
-
-const Home = () => {
+const Home = ({
+    loggedIn
+}) => {
     const regSection = useRef();
 
     const handleScrollDown = () => {

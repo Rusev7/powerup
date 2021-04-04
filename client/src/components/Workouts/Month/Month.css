@@ -13,7 +13,27 @@
     cursor: pointer;
 }
 
-.month-text:hover {
+.month-arrow {
+    color: var(--color-grey-light-1);
+    font-family: var(--font-text);
+    display: inline-block;
+    font-size: 2.5rem;
+    position: relative;
+    transition: .2s ease-out;
+    cursor: pointer;
+    margin-left: 1rem;
+    transform: rotate(180deg);
+}
+
+.flip-up {
+    transform: rotate(0);
+}
+
+.month-text-container {
+    transition: .2s ease-in;
+}
+
+.month-text-container:hover  {
     filter: brightness(150%);
 }
 

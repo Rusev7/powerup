@@ -6,6 +6,7 @@
 
 .workout-history { 
     width: 30%;
+    position: relative;
 }
 
 .empty-message {

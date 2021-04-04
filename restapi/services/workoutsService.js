@@ -66,12 +66,8 @@ const getAll = async userId => {
 
             if(resultArr[yearIndex].months[month]) {
                 let currMonth = resultArr[yearIndex].months[month][monthName];
-                // currMonth = currMonth.filter(x => x != null);
 
-                // let dateIndex = currMonth.findIndex(x => x.date == `${daysArr[day]} ${date}`);
-                
                 let dateIndex = -1;
-
                 
                 for(let i = 0; i < currMonth.length; i++) {
                     if(!currMonth[i]) {
@@ -122,8 +118,7 @@ const getAll = async userId => {
 
         year.months.map(monthObject => {
             const [monthName, datesArray] = Object.entries(monthObject)[0];
-            console.log(datesArray);
-            
+
             datesArray.sort((a, b) => {
                 const [, date1] = a.date.split(' ');
                 const [, date2] = b.date.split(' ');

@@ -2,7 +2,8 @@
     position: sticky;
     left: 30%;
     top: 25%;
-    height: 60vh;
+    max-height: 50rem;
+    overflow-y: scroll;
     width: 65%;
     outline: 2px solid var(--color-grey-light-1);
     padding: 2rem 5rem;

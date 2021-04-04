@@ -11,7 +11,10 @@ const Month = ({
 
     return (
         <div className="month-container">
-            <span className="month-text" onClick={() => setClicked(!clicked)}>{month}</span>
+            <div className="month-text-container" onClick={() => setClicked(!clicked)}>
+                <span className="month-text">{month}</span>
+                <span className={`month-arrow ${clicked ? 'flip-up' : ''}`}>&#8679;</span>
+            </div>
             <div className={`${clicked ? 'month-content-hidden' : ''}`} >{children}</div>
         </div>
     )
