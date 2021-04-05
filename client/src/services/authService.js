@@ -19,3 +19,17 @@ export const login = data => {
         body: JSON.stringify(data)
     })
 }
+
+export const updateData = (data, userId) => {
+    return fetch(`${url}/change-user-data/${userId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+};
+
+export const resetProgress = userId => {
+    return fetch(`${url}/reset-progress/${userId}`);
+}

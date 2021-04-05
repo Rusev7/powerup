@@ -1,8 +1,8 @@
 import './App.css';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, useHistory } from 'react-router-dom';
 
 import Navigation from './components/Navigation';
 import Home from './components/Home';
@@ -13,7 +13,15 @@ import Profile from './components/Profile';
  
 function App() {
     const [loggedIn, setloggedIn] = useState(false);
+    const history = useHistory();
 
+    const user = localStorage.getItem('user');
+
+    useEffect(() => {
+        if(user) {
+            setloggedIn(true);
+        }
+    }, [user]);
 
     const handleLogin = bool => {
         if(bool) {
@@ -31,6 +39,13 @@ function App() {
                 <Route path="/create-workout" component={CreateWorkout} />
                 <Route path="/my-workouts" component={Workouts} />
                 <Route path="/profile" component={Profile} />
+                <Route path="/logout">
+                    {() => {
+                        localStorage.removeItem('user');
+                        setloggedIn(false);
+                        history.push('/');
+                    }}
+                </Route>
             </Switch>
         </div>
     );

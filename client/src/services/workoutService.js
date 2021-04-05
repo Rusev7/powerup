@@ -4,10 +4,9 @@ export const createWorkout = (data, userId) => {
     const dataBody = {
         workoutName: data.workoutName,
         personalWeight: data.personalWeight,
-        userId,
     }
 
-    return fetch(`${url}/create`, {
+    return fetch(`${url}/create/${userId}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -27,5 +26,5 @@ export const pushExercise = data => {
 }
 
 export const getWorkotus = userId => {
-    return fetch(`${url}/get-workouts`);
+    return fetch(`${url}/get-workouts/${userId}`);
 }

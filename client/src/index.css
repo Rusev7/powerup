@@ -152,3 +152,39 @@ body {
         opacity: 1;
     }
 }
+
+@keyframes appear-up-right {
+    0% {
+        transform: rotate(45deg) translate(3rem, 20rem);
+        opacity: 0;
+    }
+
+    100% {
+        transform: rotate(45deg) translate(0%, 0%);
+        opacity: 1;
+    }
+}
+
+@keyframes appear-up-left {
+    0% {
+        transform: rotate(-45deg) translate(3rem, 20rem);
+        opacity: 0;
+    }
+
+    100% {
+        transform: rotate(-45deg) translate(0%, 0%);
+        opacity: 1;
+    }
+}
+
+@keyframes appear-bottom {
+    0% {
+        transform: translate(-50%, -10rem);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translate(-50%, 0%);
+        opacity: 1;
+    }
+}

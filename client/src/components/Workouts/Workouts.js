@@ -15,7 +15,9 @@ const Workouts = () => {
     const [currentWorkout, setCurrentWorkout] = useState(null);
 
     useEffect(() => {
-        getWorkotus('60646e784ed576062ca61187')
+        const userId = JSON.parse(localStorage.getItem('user')).id;
+        
+        getWorkotus(userId)
             .then(res => res.json())
             .then(data => {
                 const workoutsData = data.workouts;

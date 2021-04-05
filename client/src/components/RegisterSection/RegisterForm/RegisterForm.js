@@ -3,6 +3,7 @@ import './RegisterForm.css';
 import { usernameValidation, passwordValidation, emailValidation, numberValidation } from '../../../validation/validation';
 
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import ErrorNotification from '../../ErrorNotification';
 import { register } from '../../../services/authService';
 
@@ -11,6 +12,7 @@ const RegisterForm = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const [userInfo, setUserInfo] = useState({});
     const [step, setStep] = useState(1);
+    const history = useHistory();
 
     const inputValidation = input => {
         if (!input.validated) {
@@ -78,7 +80,8 @@ const RegisterForm = () => {
                             setStep(1);
                             setErrorMessage(res.message.errorMsg);
                         } else {
-                            console.log('success');
+                            localStorage.setItem('user', JSON.stringify(res.user));
+                            history.push('/');
                         }
                          
                     })

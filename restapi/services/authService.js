@@ -37,7 +37,7 @@ const register = async data => {
 
     await newUser.save();
 
-    return token;
+    return {token, user: newUser};
 };
 
 const login = async data => {
@@ -53,10 +53,43 @@ const login = async data => {
     
     let token = jwt.sign({id: user._id, username: user.name}, SECRET);
 
-    return token;
+    return {token, user};
 };
+
+const changeData = async (data, userId) => {
+    const user = await User.findById(userId);
+
+    if(data.type == 'email') {
+        user.email = data.email;
+        return await user.save();
+    } else if (data.type == 'password') {
+        let { oldPassword, newPassword } = data;
+
+        newPassword = userValidator.passwordValidation(newPassword);
+        
+        let passwordCheck = await bcrypt.compare(oldPassword, user.password);
+        if(!passwordCheck) throw { errorMsg: 'Wrong old password!' };
+
+        let salt = await bcrypt.genSalt(SALT_ROUNDS);
+        let hash = await bcrypt.hash(newPassword, salt);
+
+        user.password = hash;
+
+        return await user.save();
+    }
+}
+
+const resetProgress = async userId => {
+    const user = await User.findById(userId);
+
+    user.workouts = [];
+
+    return await user.save();
+}; 
 
 module.exports = {
     register,
     login,
+    changeData,
+    resetProgress,
 }

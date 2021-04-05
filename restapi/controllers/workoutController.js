@@ -2,8 +2,8 @@ const router = require('express').Router();
 
 const workoutService = require('../services/workoutsService');
 
-router.post('/create', (req, res) => {
-    workoutService.create(req.body)
+router.post('/create/:userId', (req, res) => {
+    workoutService.create(req.body, req.params.userId)
         .then(data => {
             res.status(201).json({ message: 'Successfully created workout!', workoutId: data._id });
         })
@@ -17,10 +17,8 @@ router.post('/add-exercise', (req, res) => {
         });
 });
 
-router.get('/get-workouts', (req, res) => {
-    // workoutService.getAll(req.user.id);
-    console.log(req);
-    workoutService.getAll('60646e784ed576062ca61187')
+router.get('/get-workouts/:userId', (req, res) => {
+    workoutService.getAll(req.params.userId)
         .then(workouts => {
             res.status(200).json({ message: 'Successfully fetched workouts!', workouts });
         })

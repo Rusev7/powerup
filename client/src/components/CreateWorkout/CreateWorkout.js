@@ -37,7 +37,9 @@ const CreateWorkout = () => {
                 personalWeight: personalWeight.input
             }
 
-            createWorkout(data, '60646e784ed576062ca61187')
+            const userId = JSON.parse(localStorage.getItem('user')).id;
+
+            createWorkout(data, userId)
                 .then(res => res.json())
                 .then(data => {
                     setWorkoutIdParam(data.workoutId);

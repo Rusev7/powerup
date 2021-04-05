@@ -48,7 +48,13 @@ class Navigation extends Component {
         login({email: email.value, password: password.value})
             .then(res => res.json())
             .then(res => {
-                this.props.handleLogin(true);
+                if(res.type === 'error') {
+                    
+                } else {
+                    localStorage.setItem('user', JSON.stringify(res.user));
+                    this.props.handleLogin(true);
+                }
+                
             });
     }
 

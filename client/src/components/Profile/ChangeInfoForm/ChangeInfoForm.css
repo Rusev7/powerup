@@ -1,0 +1,40 @@
+.change-info-form {
+    margin: 5rem auto;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.change-info-input {
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+    border: 2px solid var(--color-primary);
+    outline: none;
+    background-color: transparent;
+    color: var(--color-grey-light-1);
+}
+
+.change-info-btn {
+    border: none;
+    outline: none;
+    background-color: var(--color-primary);
+    padding: 1rem 2rem;
+    margin-top: 3rem;
+    cursor: pointer;
+    transition: .2s ease-in;
+}
+
+.change-info-btn:hover {
+    transform: scale(1.05);
+}
+
+.change-info-btn:active {
+    transform: scale(1.05) translateY(3px);
+}
+
+.change-form-heading {
+    text-align: center;
+    color: var(--color-primary);
+    font-family: var(--font-text);
+    font-size: 2rem;
+}
