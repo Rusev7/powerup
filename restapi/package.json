@@ -6,6 +6,12 @@
   "scripts": {
     "start": "nodemon app.js"
   },
+  "keywords": [
+    "heroku"
+  ],
+  "engines": {
+    "node": "14.x"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Rusev7/powerup.git"
