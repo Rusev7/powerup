@@ -3,11 +3,6 @@ import './Navigation.css';
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { login } from '../../services/authService';
-
-import Input from './Input';
-import ErrorNotification from '../ErrorNotification';
-
 class Navigation extends Component {
     constructor(props) {
         super(props);
@@ -18,7 +13,6 @@ class Navigation extends Component {
 
         this.onHamburgerClickHandler = this.onHamburgerClickHandler.bind(this);
         this.onCloseBtnClickHandler = this.onCloseBtnClickHandler.bind(this);
-        this.handleLoginFormSubmit = this.handleLoginFormSubmit.bind(this);
     }
 
     handleScroll(e) {
@@ -41,23 +35,7 @@ class Navigation extends Component {
         this.setState({menu: false});
     }
 
-    handleLoginFormSubmit(e) {
-        e.preventDefault();
-
-        const { email, password } = e.target;
-
-        login({email: email.value, password: password.value})
-            .then(res => res.json())
-            .then(res => {
-                if(res.type === 'error') {
-                    this.props.handleError(true, res.message.errorMsg)
-                } else {
-                    localStorage.setItem('user', JSON.stringify(res.user));
-                    this.props.handleLogin(true);
-                }
-                
-            });
-    }
+    
 
     render() {
         if(this.props.loggedIn) {
@@ -86,12 +64,9 @@ class Navigation extends Component {
             return (
                 <nav className="nav">
                    <NavLink to="/" className="nav-logo"><img src="/logoD.png" alt="Logo"/></NavLink>
-                    <form className="right-section" onSubmit={this.handleLoginFormSubmit}>
-                        <ErrorNotification message={this.state.errorMessage}/>
-                        <Input name="email" type="email" />
-                        <Input name="password" type="password" />
-                        <input type="submit" className="btn-red-small btn-login" value="login"/>
-                    </form>
+                    <div className="right-section">
+                        <button className="btn-red-small btn-login" onClick={this.props.handleOpenModal}>login</button>
+                    </div>
 
                     
                 </nav>

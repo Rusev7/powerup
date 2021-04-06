@@ -10,41 +10,41 @@ import CreateWorkout from './components/CreateWorkout';
 import Workouts from './components/Workouts';
 import Profile from './components/Profile';
 
- 
+import OpenModalContext from './context/OpenModalContext';
+
 function App() {
     const [loggedIn, setloggedIn] = useState(false);
-    const [error, setError] = useState({err: false, msg: ''});
+    const [openModal, setOpenModal] = useState(false);
     const history = useHistory();
 
     const user = localStorage.getItem('user');
 
     useEffect(() => {
-        if(user) {
+        if (user) {
             setloggedIn(true);
         }
     }, [user]);
 
     const handleLogin = bool => {
-        if(bool) {
+        if (bool) {
             setloggedIn(true);
         }
     }
 
-    const handleError = (bool, msg) => {
-        if(bool) {
-            setError({
-                err: bool,
-                msg,
-            })
+    const handleOpenModal = (bool) => {
+        if (bool) {
+            setOpenModal(bool)
         }
     }
 
     return (
         <div className="App">
-            <Navigation handleLogin={handleLogin} handleError={handleError} loggedIn={loggedIn}/>
+            <Navigation handleLogin={handleLogin} handleOpenModal={handleOpenModal} loggedIn={loggedIn} />
             <Switch>
                 <Route path="/" exact>
-                    <Home loggedIn={loggedIn} error={error}/>
+                    <OpenModalContext.Provider value={openModal}>
+                        <Home loggedIn={loggedIn} />
+                    </OpenModalContext.Provider>
                 </Route>
                 <Route path="/create-workout" component={CreateWorkout} />
                 <Route path="/my-workouts" component={Workouts} />

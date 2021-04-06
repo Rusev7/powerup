@@ -7,7 +7,6 @@ import Footer from '../Footer';
 
 const Home = ({
     loggedIn,
-    error
 }) => {
     const regSection = useRef();
 
@@ -25,7 +24,7 @@ const Home = ({
     } else {
         return (
             <div className="fade-in">
-                <StartSection handleScrollDown={handleScrollDown} error={error}/>
+                <StartSection handleScrollDown={handleScrollDown} />
                 <RegisterSection ref={regSection}/>
             </div>
         )
