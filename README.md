@@ -18,3 +18,5 @@
  - bcrypt;
  - body-parser;
  - cors;
+ 
+In order to use the app, every user must register, so the app can keep the user's info in the database. A **blog system** is being developed in now, after it's completion, the _guest_ users will be able to use it as well as the registered will be too.
