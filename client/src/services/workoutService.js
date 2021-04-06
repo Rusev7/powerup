@@ -1,4 +1,4 @@
-const url = `http://localhost:5000/workouts`;
+const url = `https://evening-coast-86301.herokuapp.com/workouts`;
 
 export const createWorkout = (data, userId) => {
     const dataBody = {
