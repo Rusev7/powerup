@@ -98,9 +98,33 @@ const resetProgress = async userId => {
     return await user.save();
 };
 
+const checkEmail = async data => {
+    const email = data.email;
+
+    let user = await User.findOne({ email });
+    
+    if (!user) {
+        throw { errorMsg: 'There\'s no such user, registered with that email!' }
+    } else {
+        return true;
+    }
+    
+};
+
+const resetPassword = async data => {
+    const password = userValidator.passwordValidation(data.password);
+
+    let salt = await bcrypt.genSalt(SALT_ROUNDS);
+    let hash = await bcrypt.hash(password, salt);
+    
+    return await User.findOneAndUpdate({ email: data.email }, { password: hash })
+}
+
 module.exports = {
     register,
     login,
     changeData,
     resetProgress,
+    checkEmail,
+    resetPassword,
 }

@@ -39,10 +39,10 @@ function App() {
 
     return (
         <div className="App">
-            <Navigation handleLogin={handleLogin} handleOpenModal={handleOpenModal} loggedIn={loggedIn} />
+            <Navigation handleOpenModal={handleOpenModal} loggedIn={loggedIn} />
             <Switch>
                 <Route path="/" exact>
-                    <OpenModalContext.Provider value={openModal}>
+                    <OpenModalContext.Provider value={{openModal, handleLogin: handleLogin}}>
                         <Home loggedIn={loggedIn} />
                     </OpenModalContext.Provider>
                 </Route>

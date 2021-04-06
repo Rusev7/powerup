@@ -47,4 +47,24 @@ router.get('/reset-progress/:userId', (req, res) => {
         })
 });
 
+router.post('/check-email', (req, res) => {
+    authServices.checkEmail(req.body)
+        .then(() => {
+            res.status(200).json({ message: 'The email is existing', type: 'success' })
+        })
+        .catch(err => {
+            res.status(400).json({ message: err, type: 'error' });
+        });
+});
+
+router.post('/reset-password', (req, res) => {
+    authServices.resetPassword(req.body)
+        .then(user => {
+            res.status(200).json({ message: 'Password changed successfully!', type: 'success', user: { id: user._id, username: user.username, email: user.email, weight: user.weight, height: user.height, age: user.age }})
+        })
+        .catch(err => {
+            res.status(400).json({ message: err, type: 'error' })
+        });
+});
+
 module.exports = router;
