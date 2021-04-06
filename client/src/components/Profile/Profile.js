@@ -1,5 +1,6 @@
 import { useState } from 'react';
-
+import { useHistory } from 'react-router-dom';
+ 
 import './Profile.css';
 import Modal from '../Modal/Modal';
 import ChangeInfoForm from './ChangeInfoForm';
@@ -11,19 +12,26 @@ const Profile = () => {
     });
 
     const userData = JSON.parse(localStorage.getItem('user'));
+    const history = useHistory();
+
+    if(!userData) {
+        history.push('/');
+        return null;
+    }
+
     const username = userData.username;
     
     const containerClassName = modal.show ? 'modal-container-show' : 'modal-container-hide';
 
     return (
         <div className="profile-page-wrapper">
-            <h3 className="profile-page-username">{username}</h3>
+            <h3 className="profile-page-username">{username} - {userData.weight}kg - {userData.height}cm</h3>
             <div className="avatar-container">
                 <img src="/avatar.png" alt="avatar" className="user-avatar"/>
                 <button className="profile-page-btn" onClick={() => setModal({show: true, info: 'password'})}>change password</button>
                 <button className="profile-page-btn" onClick={() => setModal({show: true, info: 'email'})}>change email</button>
                 <button className="profile-page-btn" onClick={() => setModal({show: true, info: 'progress'})}>reset progress</button>
-                <button className="profile-page-btn" onClick={() => setModal({show: true, info: 'avatar'})}>change profile picture</button>
+                <button className="profile-page-btn" onClick={() => setModal({show: true, info: 'personalInfo'})}>change profile picture and personal info</button>
             </div>
             <p className="profile-page-text">(hover on the avatar picture)</p>
 

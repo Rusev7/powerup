@@ -6,7 +6,7 @@
 }
 
 .change-info-input {
-    margin-top: 1rem;
+    margin-top: .5rem;
     padding: 1rem 2rem;
     border: 2px solid var(--color-primary);
     outline: none;
@@ -37,4 +37,11 @@
     color: var(--color-primary);
     font-family: var(--font-text);
     font-size: 2rem;
+}
+
+.change-form-label {
+    font-size: 1.5rem;
+    color: var(--color-grey-light-1);
+    font-family: var(--font-text);
+    margin-top: 1.5rem;
 }

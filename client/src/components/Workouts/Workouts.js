@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import { getWorkotus } from '../../services/workoutService';
 
@@ -13,6 +14,7 @@ const Workouts = () => {
 
     const [workouts, setWorkouts] = useState([]);
     const [currentWorkout, setCurrentWorkout] = useState(null);
+    const history = useHistory();
 
     useEffect(() => {
         const userId = JSON.parse(localStorage.getItem('user')).id;
@@ -24,6 +26,11 @@ const Workouts = () => {
                 setWorkouts(workoutsData)
             });
     }, [])
+
+    if(!localStorage.getItem('user')) {
+        history.push('/');
+        return null;
+    }
 
 
     return (

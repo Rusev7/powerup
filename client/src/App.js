@@ -13,6 +13,7 @@ import Profile from './components/Profile';
  
 function App() {
     const [loggedIn, setloggedIn] = useState(false);
+    const [error, setError] = useState({err: false, msg: ''});
     const history = useHistory();
 
     const user = localStorage.getItem('user');
@@ -29,12 +30,21 @@ function App() {
         }
     }
 
+    const handleError = (bool, msg) => {
+        if(bool) {
+            setError({
+                err: bool,
+                msg,
+            })
+        }
+    }
+
     return (
         <div className="App">
-            <Navigation handleLogin={handleLogin} loggedIn={loggedIn}/>
+            <Navigation handleLogin={handleLogin} handleError={handleError} loggedIn={loggedIn}/>
             <Switch>
                 <Route path="/" exact>
-                    <Home loggedIn={loggedIn}/>
+                    <Home loggedIn={loggedIn} error={error}/>
                 </Route>
                 <Route path="/create-workout" component={CreateWorkout} />
                 <Route path="/my-workouts" component={Workouts} />
@@ -44,6 +54,7 @@ function App() {
                         localStorage.removeItem('user');
                         setloggedIn(false);
                         history.push('/');
+                        return null;
                     }}
                 </Route>
             </Switch>

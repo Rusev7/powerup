@@ -11,6 +11,12 @@ const ChangeInfoForm = ({
 }) => {
     const user = JSON.parse(localStorage.getItem('user'));
     const [userEmail, setUserEmail] = useState(user.email);
+    const [personalInfoObject, setPersonalInfoObject] = useState({
+        'weight': user.weight,
+        'height': user.height,
+        'age': user.age,
+    })
+
     const [errorMessage, setErrorMessage] = useState(null);
 
     if(info === '') {
@@ -20,6 +26,17 @@ const ChangeInfoForm = ({
     const onEmailChangeHandler = e => {
         setUserEmail(e.target.value);
     };
+
+    const onPersonalInfoChangeHandler = e => {
+        let obj = {...personalInfoObject};
+        let newObj = {
+            [e.target.name]: e.target.value,
+        }
+
+        Object.assign(obj, newObj);
+
+        setPersonalInfoObject(obj);
+    }
 
     const email = () => {
         return (
@@ -40,9 +57,20 @@ const ChangeInfoForm = ({
     }
 
     const progress = () => {
+            return <h3 className="change-form-heading">Are you sure you want to reset your whole workout progress?</h3>
+    }
+
+    const personalInfo = () => {
         return (
             <>
-                <h3 className="change-form-heading">Are you sure you want to reset your whole workout progress?</h3>
+                <label htmlFor="weight" className="change-form-label">Weight:</label>
+                <input type="number" value={personalInfoObject.weight} onChange={onPersonalInfoChangeHandler} name="weight" className="change-info-input"/>
+
+                <label htmlFor="weight" className="change-form-label">Height:</label>
+                <input type="number" value={personalInfoObject.height} onChange={onPersonalInfoChangeHandler} name="height" className="change-info-input"/>
+
+                <label htmlFor="weight" className="change-form-label">Age:</label>
+                <input type="number" value={personalInfoObject.age} onChange={onPersonalInfoChangeHandler} name="age" className="change-info-input"/>
             </>
         )
     }
@@ -51,6 +79,7 @@ const ChangeInfoForm = ({
         'email': email,
         'password': password,
         'progress': progress,
+        'personalInfo': personalInfo,
     } 
 
     const executed = execObject[info];
@@ -101,6 +130,22 @@ const ChangeInfoForm = ({
                     .catch(err => {
                         setErrorMessage(err);
                     });
+                break;
+            case 'personalInfo':
+                updateData({personalInfoObject, type: 'personalInfo'}, user.id)
+                    .then(res => res.json())
+                    .then(res => {
+                        if(res.type === 'error') {
+                            setErrorMessage(res.message.errorMsg);
+                        } else {
+                            localStorage.setItem('user', JSON.stringify(res.user));
+                            setErrorMessage(null);
+                            handleClose();
+                        }
+                    })
+                    .catch(err => {
+                        setErrorMessage(err);
+                    })
                 break;
             default:
                 break;

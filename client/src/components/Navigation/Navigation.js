@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom';
 import { login } from '../../services/authService';
 
 import Input from './Input';
+import ErrorNotification from '../ErrorNotification';
 
 class Navigation extends Component {
     constructor(props) {
@@ -49,7 +50,7 @@ class Navigation extends Component {
             .then(res => res.json())
             .then(res => {
                 if(res.type === 'error') {
-                    
+                    this.props.handleError(true, res.message.errorMsg)
                 } else {
                     localStorage.setItem('user', JSON.stringify(res.user));
                     this.props.handleLogin(true);
@@ -80,14 +81,19 @@ class Navigation extends Component {
                 </nav>
             )
         } else {
+            
+
             return (
                 <nav className="nav">
                    <NavLink to="/" className="nav-logo"><img src="/logoD.png" alt="Logo"/></NavLink>
                     <form className="right-section" onSubmit={this.handleLoginFormSubmit}>
+                        <ErrorNotification message={this.state.errorMessage}/>
                         <Input name="email" type="email" />
                         <Input name="password" type="password" />
                         <input type="submit" className="btn-red-small btn-login" value="login"/>
                     </form>
+
+                    
                 </nav>
             )
         }

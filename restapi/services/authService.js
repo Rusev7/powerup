@@ -12,32 +12,32 @@ const register = async data => {
     let height = data.height;
     let weight = data.weight;
     let registrationDate = new Date;
-    
-    if(password !== data.passwordRep) {
+
+    if (password !== data.passwordRep) {
         throw { errorMsg: 'Passwords must match!' };
     }
 
     const userByUsername = await User.findOne({ username });
     const userByEmail = await User.findOne({ email });
-    
-    if(userByUsername) {
+
+    if (userByUsername) {
         throw { errorMsg: 'There is already registered user with that username' };
     }
 
-    if(userByEmail) {
+    if (userByEmail) {
         throw { errorMsg: 'There is already registered user with that email' };
     }
 
     let salt = await bcrypt.genSalt(SALT_ROUNDS);
     let hash = await bcrypt.hash(password, salt);
 
-    const newUser = new User({username, email, password: hash, registrationDate, age, height, weight});
+    const newUser = new User({ username, email, password: hash, registrationDate, age, height, weight });
 
-    let token = jwt.sign({id: newUser._id, username: newUser.username}, SECRET);
+    let token = jwt.sign({ id: newUser._id, username: newUser.username }, SECRET);
 
     await newUser.save();
 
-    return {token, user: newUser};
+    return { token, user: newUser };
 };
 
 const login = async data => {
@@ -45,35 +45,46 @@ const login = async data => {
     let password = userValidator.passwordValidation(data.password);
     let errorMsg = 'Invalid email / password!';
 
-    let user = await User.findOne({email});
-    if(!user) throw { errorMsg };
+    let user = await User.findOne({ email });
+    if (!user) throw { errorMsg };
 
     let passwordCheck = await bcrypt.compare(password, user.password);
-    if(!passwordCheck) throw { errorMsg };
-    
-    let token = jwt.sign({id: user._id, username: user.name}, SECRET);
+    if (!passwordCheck) throw { errorMsg };
 
-    return {token, user};
+    let token = jwt.sign({ id: user._id, username: user.name }, SECRET);
+
+    return { token, user };
 };
 
 const changeData = async (data, userId) => {
     const user = await User.findById(userId);
 
-    if(data.type == 'email') {
+    if (data.type == 'email') {
         user.email = data.email;
         return await user.save();
-    } else if (data.type == 'password') {
+    }
+
+    if (data.type == 'password') {
         let { oldPassword, newPassword } = data;
 
         newPassword = userValidator.passwordValidation(newPassword);
-        
+
         let passwordCheck = await bcrypt.compare(oldPassword, user.password);
-        if(!passwordCheck) throw { errorMsg: 'Wrong old password!' };
+        if (!passwordCheck) throw { errorMsg: 'Wrong old password!' };
 
         let salt = await bcrypt.genSalt(SALT_ROUNDS);
         let hash = await bcrypt.hash(newPassword, salt);
 
         user.password = hash;
+
+        return await user.save();
+    } 
+    if (data.type == 'personalInfo') {
+        const { age, weight, height } = data.personalInfoObject;
+
+        user.age = Number(age);
+        user.weight = Number(weight);
+        user.height = Number(height);
 
         return await user.save();
     }
@@ -85,7 +96,7 @@ const resetProgress = async userId => {
     user.workouts = [];
 
     return await user.save();
-}; 
+};
 
 module.exports = {
     register,

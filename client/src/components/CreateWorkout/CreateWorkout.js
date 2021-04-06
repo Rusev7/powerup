@@ -7,12 +7,20 @@ import ExerciseForm from './ExerciseForm';
 import ErrorNotification from '../ErrorNotification';
 
 import { createWorkout } from '../../services/workoutService';
+import { useHistory } from 'react-router-dom';
 
 const CreateWorkout = () => {
 
     const [formSubmitted, setFormSubmitted] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const [workoutIdParam, setWorkoutIdParam] = useState('');
+
+    const history = useHistory();
+
+    if(!localStorage.getItem('user')) {
+        history.push('/');
+        return null;
+    }
 
     const onCreateFormSubmitHandler = e => {
         e.preventDefault();
