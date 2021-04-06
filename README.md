@@ -1,4 +1,4 @@
-# PowerUp
+# **PowerUp**
 ***
 
 ## Personal fitness assistant web app
