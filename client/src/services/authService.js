@@ -3,7 +3,7 @@ const devUrl = `http://localhost:5000/auth`;
 
 
 export const register = data => {
-    return fetch(`${url}/register`, {
+    return fetch(`${devUrl}/register`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -13,7 +13,7 @@ export const register = data => {
 }
 
 export const login = data => {
-    return fetch(`${url}/login`, {
+    return fetch(`${devUrl}/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -23,7 +23,7 @@ export const login = data => {
 }
 
 export const updateData = (data, userId) => {
-    return fetch(`${url}/change-user-data/${userId}`, {
+    return fetch(`${devUrl}/change-user-data/${userId}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -33,7 +33,7 @@ export const updateData = (data, userId) => {
 };
 
 export const checkEmail = email => {
-    return fetch(`${url}/check-email`, {
+    return fetch(`${devUrl}/check-email`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -43,7 +43,7 @@ export const checkEmail = email => {
 }
 
 export const resetPassword = data => {
-    return fetch(`${url}/reset-password`, {
+    return fetch(`${devUrl}/reset-password`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -53,5 +53,5 @@ export const resetPassword = data => {
 }
 
 export const resetProgress = userId => {
-    return fetch(`${url}/reset-progress/${userId}`);
+    return fetch(`${devUrl}/reset-progress/${userId}`);
 }

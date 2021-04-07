@@ -7,7 +7,7 @@ export const createWorkout = (data, userId) => {
         personalWeight: data.personalWeight,
     }
 
-    return fetch(`${url}/create/${userId}`, {
+    return fetch(`${devUrl}/create/${userId}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -17,7 +17,7 @@ export const createWorkout = (data, userId) => {
 }
 
 export const pushExercise = data => {
-    return fetch(`${url}/add-exercise`, {
+    return fetch(`${devUrl}/add-exercise`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -27,7 +27,7 @@ export const pushExercise = data => {
 }
 
 export const pushDescriptionAndRating = data => {
-    return fetch(`${url}/add-desc-rating`, {
+    return fetch(`${devUrl}/add-desc-rating`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -37,5 +37,5 @@ export const pushDescriptionAndRating = data => {
 }
 
 export const getWorkotus = userId => {
-    return fetch(`${url}/get-workouts/${userId}`);
+    return fetch(`${devUrl}/get-workouts/${userId}`);
 }
