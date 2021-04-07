@@ -37,6 +37,19 @@ const pushExercise = async data => {
     return await currWorkout.save();
 };
 
+const pushDescriptionAndRating = async data => {
+    const workoutId = data.workoutId;
+
+    const currentWorkout = await Workout.findById(workoutId);
+
+    currentWorkout.description = data.description;
+    currentWorkout.rating = data.rating;
+
+    console.log(currentWorkout);
+
+    return await currentWorkout.save();
+};
+
 const getAll = async userId => {
     const user = await User.findById(userId).populate('workouts');
 
@@ -134,4 +147,5 @@ module.exports = {
     create,
     pushExercise,
     getAll,
+    pushDescriptionAndRating,
 }

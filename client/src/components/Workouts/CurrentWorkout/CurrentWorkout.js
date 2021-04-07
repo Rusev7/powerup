@@ -14,7 +14,7 @@ const CurrentWorkout = ({
         date = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
 
         return (
-            <form className="workout-container">
+            <div className="workout-container">
                 <h1 className="workout-container-name">{workout.workoutName}</h1>
                 <h2 className="workout-container-date">{date}</h2>
                 <h3 className="workout-container-weight">Weight: {workout.personalWeight}kg</h3>
@@ -42,7 +42,23 @@ const CurrentWorkout = ({
                     </div>}
                     
                 </div>
-            </form>
+
+                <div className="rating-desc-container">
+                        {workout.rating && 
+                            <>
+                                <h3 className="workout-container-weight">Rating:</h3>
+                                <img src={`/rating-${workout.rating}.png`} alt="rating emoji" className="workout-emoji"/> 
+                            </>
+                        }
+
+                        {workout.description && 
+                            <>
+                                <h3 className="workout-container-weight">Description:</h3>
+                                <p className="workout-description">{workout.description}</p> 
+                            </>
+                        }
+                </div>
+            </div>
         )
     }
 };

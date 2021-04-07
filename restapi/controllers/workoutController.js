@@ -17,6 +17,13 @@ router.post('/add-exercise', (req, res) => {
         });
 });
 
+router.post('/add-desc-rating', (req, res) => {
+    workoutService.pushDescriptionAndRating(req.body)
+        .then(data => {
+            res.status(201).json({ message: 'Successfully added rating and description!' });
+        });
+});
+
 router.get('/get-workouts/:userId', (req, res) => {
     workoutService.getAll(req.params.userId)
         .then(workouts => {

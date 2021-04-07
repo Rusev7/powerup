@@ -24,7 +24,6 @@ const CreateWorkout = () => {
 
     const onCreateFormSubmitHandler = e => {
         e.preventDefault();
-        console.log(e.target);
 
         const workoutName = nameValidation(e.target.name.value, 'Workout name');
         const personalWeight = numberValidation(e.target.personalWeight.value, 'Personal weight');

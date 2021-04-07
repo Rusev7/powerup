@@ -1,4 +1,5 @@
 const url = `https://evening-coast-86301.herokuapp.com/workouts`;
+const devUrl = `http://localhost:5000/workouts`;
 
 export const createWorkout = (data, userId) => {
     const dataBody = {
@@ -17,6 +18,16 @@ export const createWorkout = (data, userId) => {
 
 export const pushExercise = data => {
     return fetch(`${url}/add-exercise`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data),
+    })
+}
+
+export const pushDescriptionAndRating = data => {
+    return fetch(`${url}/add-desc-rating`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
