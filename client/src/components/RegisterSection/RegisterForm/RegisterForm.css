@@ -21,6 +21,20 @@
     align-self: center;
 }
 
+@media screen and (max-width: 1000px) {
+    .register-form {
+        flex-direction: column;
+    }
+
+    .button-container {
+        width: 100%;
+    }
+
+    .inputs-container {
+        width: 100%;
+    }
+}
+
 .register-input {
     color: var(--color-primary);
     font-family: var(--font-text);

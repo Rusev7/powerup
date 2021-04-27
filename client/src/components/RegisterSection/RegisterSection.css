@@ -23,6 +23,22 @@
     font-size: 3rem;
 }
 
+@media screen and (max-width: 600px) {
+    .description-container {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .description-container {
+        margin-top: 3rem;
+    }
+
+    .description-text {
+        font-size: 2.5rem;
+    }
+}
+ 
 .description-logo { 
     color: var(--color-primary)
 }

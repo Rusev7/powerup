@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500&family=Ubuntu:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500;700&family=Ubuntu:wght@300;400;500&display=swap');
 
 :root {
     /* Color variables */
@@ -16,6 +16,7 @@
     /* Font variables */
     --font-heading: 'Roboto Slab', serif;
     --font-text: 'Ubuntu', sans-serif;
+    --font-heading-1: 'Noto Sans JP', sans-serif;
 }
 
 *,

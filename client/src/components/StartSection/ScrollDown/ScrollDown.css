@@ -10,6 +10,12 @@
     align-items: center;
 }
 
+@media screen and (max-width: 900px) {
+    .scroll-down-container {
+        bottom: 7rem;
+    }
+}
+
 .scroll-down-text {
     margin-top: 3rem;
     font-size: 1.5rem;
